@@ -104,5 +104,5 @@ uninstall:
 
 .PHONY: clean
 clean:
-	-rm -r -- bin
+	-rm -r -- bin *.su
 
