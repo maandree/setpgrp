@@ -1,0 +1,5 @@
+*
+!/.gitignore
+!/setpgrp.install
+!/PKGBUILD
+
