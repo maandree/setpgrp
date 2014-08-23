@@ -30,7 +30,7 @@ INFODIR ?= $(DATADIR)/info
 LICENSEDIR ?= $(DATADIR)/licenses
 
 # The name of the package as it should be installed.
-PKGNAME ?= mds
+PKGNAME ?= setpgrp
 
 
 # Optimisation level (and debug flags.)
@@ -69,6 +69,37 @@ setpgrp: bin/setpgrp
 bin/%: src/%.c
 	@mkdir -p bin
 	$(CC) $(C_FLAGS) -o $@ $^
+
+
+.PHONY: install
+install: install-commands install-license
+
+.PHONY: install-commands
+install-commands: install-getpgrp install-setpgrp
+
+.PHONY: install-getpgrp
+install-getpgrp: bin/getpgrp
+	install -dm755 -- "$(DESTDIR)$(BINDIR)"
+	install -m755 $< -- "$(DESTDIR)$(BINDIR)/getpgrp"
+
+.PHONY: install-setpgrp
+install-setpgrp: bin/setpgrp
+	install -dm755 -- "$(DESTDIR)$(BINDIR)"
+	install -m755 $< -- "$(DESTDIR)$(BINDIR)/setpgrp"
+
+.PHONY: install-license
+install-license:
+	install -dm755 -- "$(DESTDIR)$(LICENSEDIR)/$(PKGNAME)"
+	install -m644 COPYING LICENSE -- "$(DESTDIR)$(LICENSEDIR)/$(PKGNAME)"
+
+
+.PHONY: uninstall
+uninstall:
+	-rm -- "$(DESTDIR)$(BINDIR)/getpgrp"
+	-rm -- "$(DESTDIR)$(BINDIR)/setpgrp"
+	-rm -- "$(DESTDIR)$(LICENSEDIR)/$(PKGNAME)/COPYING"
+	-rm -- "$(DESTDIR)$(LICENSEDIR)/$(PKGNAME)/LICENSE"
+	-rmdir -- "$(DESTDIR)$(LICENSEDIR)/$(PKGNAME)"
 
 
 .PHONY: clean
