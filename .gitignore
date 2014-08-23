@@ -3,6 +3,7 @@ bin/
 obj/
 \#*\#
 .*
+*~
 !.git*
 *.sw[op]
 *.bak
