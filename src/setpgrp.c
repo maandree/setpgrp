@@ -61,12 +61,12 @@ int main(int argc, char* argv[])
     goto fail;
   group = getpgrp();
   
-  args = malloc((size_t)argc * sizeof(char*));
+  args = malloc((size_t)(argc - off + 1) * sizeof(char*));
   if (args == NULL)
     goto fail;
   
   memcpy(args, argv + off, (size_t)(argc - off) * sizeof(char*));
-  args[argc - 1] = NULL;
+  args[argc - off] = NULL;
   
   if (switch_print)
     if (printf("%ji\n", (intmax_t)group) < 0)
