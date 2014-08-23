@@ -30,15 +30,15 @@ int main(int argc, char* argv[])
   int switch_help = 0;
   pid_t group;
   char** args;
-  size_t off;
+  int off;
   
-  for (off = 1; off < (size_t)argc; off++)
+  for (off = 1; off < argc; off++)
     if (!strcmp(argv[off], "--print"))
       switch_print = 1;
     else if (!strcmp(argv[off], "--export"))
       {
 	switch_export = ++off;
-	if (off == (size_t)argc)
+	if (off == argc)
 	  goto help;
       }
     else if (!strcmp(argv[off], "--help"))
@@ -61,11 +61,11 @@ int main(int argc, char* argv[])
     goto fail;
   group = getpgrp();
   
-  args = malloc(argc * sizeof(char*));
+  args = malloc((size_t)argc * sizeof(char*));
   if (args == NULL)
     goto fail;
   
-  memcpy(args, argv + off, ((size_t)argc - off) * sizeof(char*));
+  memcpy(args, argv + off, (size_t)(argc - off) * sizeof(char*));
   args[argc - 1] = NULL;
   
   if (switch_print)
