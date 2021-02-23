@@ -4,8 +4,8 @@ CONFIGFILE = config.mk
 include $(CONFIGFILE)
 
 BIN = getpgrp setpgrp
-OBJ = $(@:=.o)
-MAN = $(@:=.1)
+OBJ = $(BIN:=.o)
+MAN = $(BIN:=.1)
 HDR = arg.h
 
 
