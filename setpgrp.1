@@ -1,0 +1,142 @@
+.TH SETPGRP 1 setpgrp
+
+.SH NAME
+setpgrp - run a process in a new process group
+
+.SH SYNOPSIS
+.B setpgrp
+[-e
+.IR variable ]
+[-pv]
+.I command
+.RI [ argument ]\ ...
+
+.SH DESCRIPTION
+The
+.B setpgrp
+utility runs a command in a new process
+group, and optionally exports that process group
+identifier to a user-specified environment variable
+and optionally prints that process group identifier
+to the standard output.
+
+.SH OPTIONS
+The
+.B setpgrp
+utility conforms to the Base Definitions volume of POSIX.1-2017,
+.IR "Section 12.2" ,
+.IR "Utility Syntax Guidelines" .
+.PP
+The following option is supported:
+.TP
+.BI -e\  variable
+Export the identifier of the new process group
+to the specified environment
+.IR variable .
+.TP
+.B -p
+Print the identifier of the new process group
+to the standard output.
+.TP
+.B -v
+Print the identifier of the new process group
+to the standard error as a normal diagnostic message.
+
+.SH OPERANDS
+The following operands are supported:
+.TP
+.I command
+The command that shall be run with as the root user.
+This will be both the process image and the process's
+zeroth command line argument.
+.TP
+.IR argument \ ...
+Command line arguments for the command to run.
+
+.SH STDIN
+The
+.B setpgrp
+utility does not use the standard input, however the
+.I command
+it starts may.
+
+.SH INPUT FILES
+None.
+
+.SH ENVIRONMENT VARIABLES
+The following environment variables affects the execution of
+.BR setpgrp :
+.TP
+.SH PATH
+Default. See to the Base Definitions volume of POSIX.1-2017, Section 8.3, Other Environment Variables.
+
+.SH ASYNCHRONOUS EVENTS
+Default.
+
+.SH STDOUT
+The
+.B setpgrp
+utility does not use the standard output unless the
+.B -p
+option is specified, however the
+.I command
+it starts may.
+
+.SH STDERR
+The standard error is used for diagnostic messages and the
+password prompt. The
+.I command
+the
+.B setpgrp
+utility starts may also use the standard error.
+
+.SH OUTPUT FILES
+None.
+
+.SH EXTENDED DESCRIPTION
+None.
+
+.SH EXIT STATUS
+If the
+.B setpgrp
+utility fails it will exit withone of the following statuses:
+.TP
+125
+A error occurred.
+.TP
+126
+The process failed to change process image.
+.TP
+127
+The specified command was not found.
+.PP
+If the
+.B setpgrp
+utility is successful, the exit status is defined by the
+.I command
+it starts.
+
+.SH CONSEQUENCES OF ERRORS
+Default.
+
+.SH APPLICATION USAGE
+None.
+
+.SH EXAMPLES
+None.
+
+.SH RATIONALE
+None.
+
+.SH NOTES
+None.
+
+.SH BUGS
+None.
+
+.SH FUTURE DIRECTIONS
+None.
+
+.SH SEE ALSO
+.BR setpgid (2),
+.BR getpgrp (1)

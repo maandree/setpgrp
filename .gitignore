@@ -1,14 +1,6 @@
-_/
-bin/
-obj/
-\#*\#
-.*
+*\#
 *~
-!.git*
-*.sw[op]
-*.bak
 *.o
-*.out
 *.su
-*.gch
-
+/getpgrp
+/setpgrp

@@ -1,2 +1,21 @@
-Commands providing access to the setpgrp and getpgrp system calls.
+NAME
+	setpgrp - run a process in a new process group
+	getpgrp - get the current process group
 
+SYNOPSIS
+	setpgrp [-e variable] [-pv] command [argument] ...
+
+	getpgrp
+
+DESCRIPTION
+	The setpgrp utility runs a command in a new process
+	group, and optionally exports that process group
+	identifier to a user-specified environment variable
+	and optionally prints that process group identifier
+	to the standard output.
+
+	The getpgrp utility prints the identifier of the
+	current process group to the standard output.
+
+SEE ALSO
+	setpgid(2), getpgrp(2)
