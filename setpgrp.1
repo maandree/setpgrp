@@ -46,7 +46,7 @@ to the standard error as a normal diagnostic message.
 The following operands are supported:
 .TP
 .I command
-The command that shall be run with as the root user.
+The command to run within a new process group.
 This will be both the process image and the process's
 zeroth command line argument.
 .TP
@@ -58,17 +58,19 @@ The
 .B setpgrp
 utility does not use the standard input, however the
 .I command
-it starts may.
+it starts may use it.
 
 .SH INPUT FILES
 None.
 
 .SH ENVIRONMENT VARIABLES
-The following environment variables affects the execution of
+The following environment variables affect the execution of
 .BR setpgrp :
 .TP
-.SH PATH
-Default. See to the Base Definitions volume of POSIX.1-2017, Section 8.3, Other Environment Variables.
+.B PATH
+Default. See the Base Definitions volume of POSIX.1-2017,
+.IR "Section 8.3 ",
+.IR "Other Environment Variables" .
 
 .SH ASYNCHRONOUS EVENTS
 Default.
@@ -83,8 +85,7 @@ option is specified, however the
 it starts may.
 
 .SH STDERR
-The standard error is used for diagnostic messages and the
-password prompt. The
+The standard error is used for diagnostic messages only. The
 .I command
 the
 .B setpgrp
@@ -99,10 +100,10 @@ None.
 .SH EXIT STATUS
 If the
 .B setpgrp
-utility fails it will exit withone of the following statuses:
+utility fails it will exit withone of the following values:
 .TP
 125
-A error occurred.
+An error occurred.
 .TP
 126
 The process failed to change process image.
